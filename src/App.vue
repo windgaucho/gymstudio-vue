@@ -1,10 +1,8 @@
 <template>
   <div>
     <app-header></app-header>
-    <div class="columns vista-principal">
-      <div class="container is-fluid">
-        <router-view></router-view>
-      </div>
+    <div class="container vista-principal">
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -20,6 +18,6 @@
 </script>
 <style lang="scss">
   .vista-principal {
-    margin-top: 60px; 
+    margin-top: 80px; 
   }
 </style>
