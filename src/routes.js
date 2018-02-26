@@ -6,6 +6,7 @@ import Home from './components/Home.vue';
 export const routes = [
     { path: '/', name: 'home', component: Home },
     { path: '/rubros', name: 'rubros', component: Rubros },
-    { path: '/rubros/create', name: 'create_rubro', component: Rubro },
+    { path: '/rubros/crear', name: 'crear_rubro', component: Rubro },
     { path: '/articulos',name: 'articulos', component: Articulos },
+    { path: '/redirect-me', redirect: '/' },
 ];

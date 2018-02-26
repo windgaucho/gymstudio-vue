@@ -9,6 +9,8 @@ import App from './App.vue'
 import { routes } from './routes';
 
 Vue.use(VueResource);
+Vue.http.options.root = 'http://gymstudioapi';
+
 Vue.use(Buefy);
 Vue.use(VueRouter);
 
