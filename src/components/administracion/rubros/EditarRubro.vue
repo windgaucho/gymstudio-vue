@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="title">Nuevo Rubro</h1>
+    <h1 class="title">Editar Rubro</h1>
     <div>
       <b-field label="Descripción">
         <b-input v-model="rubro.descripcion" id="descripcion"></b-input>
@@ -29,29 +29,40 @@
         <b-input v-model="rubro.grupo" id="grupo"></b-input>
       </b-field>
       <b-field grouped>
-        <button class="control button is-danger" @click="submit">Guardar</button>
+        <button class="control button is-danger" @click="guardar">Guardar</button>
         <button class="control button is-dark" @click="cancelar">Cancelar</button>
       </b-field>
     </div>
   </section>
 </template>
-
 <script>
   export default {
     data() {
       return {
-        rubro: {
-          descripcion: '',
-          tipo: '',
-          grupo: '',
-        },
+        rubro: {},
         errores: {},
       };
     },
 
+    created() {
+      this.fetchRubro(this.$route.params.id);
+    },
+
     methods: {
-      submit() {
-        this.$http.post('rubros/', this.rubro)
+      fetchRubro(id) {
+        this.$http.get(`rubros/${id}`)
+          .then(response => {
+            console.log('resopnse', response);
+            return response.json();
+          })
+          .then(respuestaJson => {
+            console.log(respuestaJson);
+            this.rubro = respuestaJson.data;
+          });
+      },
+
+      guardar() {
+        this.$http.put(`rubros/${this.rubro.id}`, this.rubro)
           .then(response => {
             console.log('respuesta', response);
             this.$router.push({ name: 'rubros' });
@@ -61,15 +72,10 @@
             });
           });
       },
+
       cancelar() {
         this.$router.go(-1);
       }
-    }
+    },
   }
 </script>
-
-<style lang="scss">
-  .error-validacion {
-    margin-bottom: 10px,
-  }
-</style>

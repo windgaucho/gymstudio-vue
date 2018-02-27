@@ -27,10 +27,10 @@
           </b-table-column>
 
           <b-table-column label="Acciones">
-            <button class="button is-link" @click="edit(props.row)">
+            <button class="button is-link" @click="editar(props.row.id)">
               Editar
             </button>
-            <button class="button is-dark" @click="edit(props.row)">
+            <button class="button is-dark" @click="eliminar(props.row.id)">
               Eliminar
             </button>
           </b-table-column>
@@ -82,6 +82,15 @@
             console.log(respuestaJson);
             this.rubros = respuestaJson.data;
           });
+      },
+
+      editar(id) {
+        console.log('id', id)
+        this.$router.push({ name: 'editar_rubro', params: { id } });
+      },
+
+      eliminar(id) {
+        this.$router.push({ name: 'eliminar_rubro', params: { id } });
       }
     },
   }
