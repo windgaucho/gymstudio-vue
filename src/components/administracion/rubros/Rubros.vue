@@ -44,26 +44,6 @@
     data() {
       return {
         rubros: [],
-        columns: [
-          {
-            field: 'id',
-            label: 'ID',
-            width: '40',
-            numeric: true
-          },
-          {
-            field: 'descripcion',
-            label: 'Descripción',
-          },
-          {
-            field: 'tipo',
-            label: 'Tipo',
-          },
-          {
-            field: 'grupo',
-            label: 'Grupo',
-          },
-        ]
       }
     },
 
